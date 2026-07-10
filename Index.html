@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <title>SindhuFlow - Resume Builder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f9; }
+        .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>SindhuFlow - रिझ्युमे बनवा</h2>
+    <input type="text" id="name" placeholder="तुमचे पूर्ण नाव">
+    <input type="text" id="job" placeholder="तुमचे पद (उदा. Engineer)">
+    <button onclick="generatePDF()">Download PDF</button>
+</div>
+
+<script>
+    function generatePDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        const name = document.getElementById('name').value;
+        const job = document.getElementById('job').value;
+        doc.text("SindhuFlow Resume", 20, 20);
+        doc.text("नाव: " + name, 20, 30);
+        doc.text("पद: " + job, 20, 40);
+        doc.save("My_Resume.pdf");
+    }
+</script>
+</body>
+</html>
